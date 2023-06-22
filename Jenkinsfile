@@ -1,9 +1,17 @@
 pipeline {
-	agent any
+	// agent any
+	// aget docker image with maven
+	agent {
+		docker {
+			image 'maven:3-alpine'
+			args '-v /root/.m2:/root/.m2'
+		}
+	}
 	stages {
 		stage('Build') {
 			steps {
 				echo 'Building..'
+				sh 'mvn --version'
 			}
 		}
 		stage('Test') {
