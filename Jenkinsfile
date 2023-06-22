@@ -41,12 +41,12 @@ pipeline {
                 sh 'mvn failsafe:integration-test'
             }
         }
-		//add stage for building jar file
-		stage('Build Jar') {
-			steps {
-				sh 'mvn package -DskipTests'
-			}
-		}
+        //add stage for building jar file
+        stage('Build Jar') {
+            steps {
+                sh 'mvn package -DskipTests'
+            }
+        }
 
 
         //add stage for building docker image
