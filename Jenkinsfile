@@ -1,18 +1,23 @@
 pipeline {
-	// agent any
+	agent any
 	// agent docker image with maven 3.6.3 and java 11
-	agent {
-		docker {
-			image 'maven:3.6.3-openjdk-11'
-			args '-v /root/.m2:/root/.m2'
-		}
-	}
+	// agent {
+	// 	docker {
+	// 		image 'maven:3.6.3-openjdk-11'
+	// 		args '-v /root/.m2:/root/.m2'
+	// 	}
+	// }
 
 	stages {
 		stage('Build') {
 			steps {
+				// sh 'mvn --version'
 				echo 'Building..'
-				sh 'mvn --version'
+				echo "$PATH"
+				echo "$JAVA_HOME"
+				echo "$env.JOB_NAME"
+				echo "$env.BUILD_NUMBER"
+				
 			}
 		}
 		stage('Test') {
