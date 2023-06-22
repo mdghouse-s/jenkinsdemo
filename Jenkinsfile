@@ -1,12 +1,13 @@
 pipeline {
 	// agent any
-	// aget docker image with maven
+	// agent docker image with maven 3.6.3 and java 11
 	agent {
 		docker {
-			image 'maven:3-alpine'
+			image 'maven:3.6.3-openjdk-11'
 			args '-v /root/.m2:/root/.m2'
 		}
 	}
+
 	stages {
 		stage('Build') {
 			steps {
