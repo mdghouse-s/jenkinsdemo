@@ -7,11 +7,17 @@ pipeline {
 	// 		args '-v /root/.m2:/root/.m2'
 	// 	}
 	// }
+	environment {
+		dockerHome = tool 'docker'
+		mavenHome = tool 'maven'
+		PATH="$PATH:$dockerHome/bin:$mavenHome/bin"
+	}
 
 	stages {
 		stage('Build') {
 			steps {
-				// sh 'mvn --version'
+				sh 'mvn --version'
+				sh 'docker --version'
 				echo 'Building..'
 				echo "$PATH"
 				echo "$JAVA_HOME"
